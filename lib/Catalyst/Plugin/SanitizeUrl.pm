@@ -3,7 +3,7 @@ package Catalyst::Plugin::SanitizeUrl;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.0';
+our $VERSION = '0.2.1';
 
 use base 'Catalyst::Plugin::SanitizeUrl::PrepAction';
 
@@ -17,9 +17,10 @@ sub get_action_path
 1;
 
 __END__
+
 =head1 NAME
 
-Catalyst::Plugin::SanitizeUrl - Make sure Catalyst does not ignore trailing slashes
+Catalyst::Plugin::SanitizeUrl - Make Catalyst not ignore trailing slashes
 
 =head1 SYNOPSIS
 
@@ -44,11 +45,21 @@ URLs are concerned.
 This plugin will cause the trailing slashes to be included in the Catalyst
 path.
 
-=head2 EXTENDED METHODS
+=head1 EXTENDED METHODS
 
-=head3 prepare
+=head2 prepare
 
 Sets up $c->{form}
+
+=head2 get_action_path
+
+Overrided from L<Catalyst::Plugin::SanitizeUrl::PrepAction> to do 
+the right thing.
+
+=head1 NOTES
+
+This module's name is misleading and problematic. I heard of a better module
+to achieve the same ends as this module, but lost the reference.
 
 =head1 SEE ALSO
 
